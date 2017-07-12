@@ -30,7 +30,9 @@ public class NettyChannelMap {
     }
 
     public static void remove(String clientId) {
-         map.remove(clientId);
+        if(map.containsKey(clientId)) {
+            map.remove(clientId);
+        }
     }
 
 }

@@ -1,5 +1,6 @@
 package com.gtrack.handler;
 
+import com.gtrack.manger.NettyChannelMap;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.util.Attribute;
@@ -39,8 +40,7 @@ public class ServerHandler  extends ChannelInboundHandlerAdapter {
         cause.printStackTrace();
         Attribute<String> c =  ctx.channel().attr(CLIENT_ID);
         String clientId     =  c.get();
-
-
+        NettyChannelMap.remove(clientId);
         ctx.close();
     }
 
